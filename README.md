@@ -1,72 +1,35 @@
-Symfony Standard Edition
+Symfony Edition Standard
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
+Ce projet est basé sur la version 3.4 LTS de symfony
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
+Contenu
 --------------
+But du projet:
 
-The Symfony Standard Edition is configured with the following defaults:
+j'ai mis en place une authentification complète allant de l'inscription d'un membre jusqu'à son arrivée sur son espace dédié.
 
-  * An AppBundle you can use to start coding;
 
-  * Twig as the only configured template engine;
 
-  * Doctrine ORM/DBAL;
+Gestion des assets:
 
-  * Swiftmailer;
+j'ai créé un projet symfony en utilisant webPack Encore pour gérer les assets
 
-  * Annotations enabled for everything.
 
-It comes pre-configured with the following bundles:
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+Fonctionnalités:
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
+1/ j'ai mis en place une confirmation de création de compte par envoi d'e-mail contenant un lien avec un token de sécurité,l'utilisateur ayant 12 heures de délais pour confirmer son nouveau compte
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+2/ si l'utilisateur clique sur le lien plus de 12 heures après la réception du 1er e-mail,son token est invalidé,un nouveau token de sécurité est généré et envoyé à l'utilisateur automatiquement
+( à partir de ce moment,il a 6 heures pour valider son compte)
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
+3/ si l'utilisateur a perdu son mot de passe ,il peut demander une rénitialisation de son mot de passe pour recevoir un lien avec un token de sécurité
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
 
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
+Options:
 
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
+j'ai également utilisé des eventListeners et Subscribers afin de réduire la quantité de code présent dans les controllers
 
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
 
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
