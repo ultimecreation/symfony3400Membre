@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}Espace Membre{% endblock %}</title>
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/style.css') }}"> {% endblock %}
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+            <a class="navbar-brand" href="{{ url('homepage')}} ">Accueil</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                        
+                    <li class="nav-item">
+                        <a  href="{{url("inscription")}}" class="nav-link {% if app.request.pathinfo == '/inscription' %}active{% endif %}" >Inscription</a>
+                    </li>
+                    {% if app.user %}
+                    <li class="nav-item">
+                        <a  href="{{ url('deconnexion')}} " class="nav-link {% if app.request.pathinfo == '/deconnexion' %}active{% endif %}" >Déconnexion</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a  href="{{ url('connexion')}} " class="nav-link {% if app.request.pathinfo == '/connexion' %}active{% endif %}">Connexion</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+     <!--message-->
+     {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }} text-center">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <!--fin message-->
+    {% block body %} 
+   
+
+    {% endblock %}
+    
+    <footer class="text-muted">
+
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block javascripts %}
+    <script src="{{ asset('build/app.js') }}"></script> {% endblock %}
+</body>
+
+</html>

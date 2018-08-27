@@ -1,0 +1,22 @@
+{% extends 'default/index.html.twig' %}
+
+
+
+{% block body %}
+   <div class="container">
+       <div class="row">
+           <div class="col-md-5 mx-auto">
+               <h1 class="text-center">Inscription</h1>
+               {{form_start(form)}}
+
+               {{ form_widget(form)}}
+                <div class="form-group">
+                    <input type="submit" name="submit" value="Soumettre" class="btn btn-primary btn-block">
+                </div>
+               {{ form_end(form)}}
+           </div>
+       </div>
+   </div>
+
+{% endblock %}
+
